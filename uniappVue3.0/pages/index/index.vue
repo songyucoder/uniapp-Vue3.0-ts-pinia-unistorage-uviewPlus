@@ -2,7 +2,7 @@
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
 		<view class="text-area">
-			<text class="title">dddd</text>
+			<text class="title">ddd366d</text>
 		</view>
 	</view>
 </template>
