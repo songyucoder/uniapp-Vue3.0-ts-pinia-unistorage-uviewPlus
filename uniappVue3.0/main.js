@@ -13,8 +13,10 @@ app.$mount()
 
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
+import customRouter from './utils/custom-router'
 export function createApp() {
   const app = createSSRApp(App)
+  app.provide('customRouter', customRouter)
   return {
     app
   }

@@ -2,16 +2,26 @@
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
 		<view class="text-area">
-			<text class="title">ddd366d</text>
+			<text class="title" @click="onclickBtnEvent">点击跳转</text>
 		</view>
 	</view>
 </template>
 
-<script setup lang="ts">
+<script setup>
+	import { reactive, ref, inject } from 'vue'
+    const customRouter = inject('customRouter')
+    const  onclickBtnEvent=()=>{
+	customRouter.navigateTo({
+	    url: '/pagesHome/cateory/index',
+	    query: {
+	        'id':0
+	    }
+	})
+}
 	
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.content {
 		display: flex;
 		flex-direction: column;
