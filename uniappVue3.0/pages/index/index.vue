@@ -9,7 +9,16 @@
 
 <script setup>
 	import { reactive, ref, inject } from 'vue'
+	import { onLoad } from '@dcloudio/uni-app'
+	import { getUploadApplyNonce } from '@/api/index'
     const customRouter = inject('customRouter')
+	
+	onLoad(()=>{
+		console.log(getUploadApplyNonce('sdff'))
+		
+	})
+	
+	
     const  onclickBtnEvent=()=>{
 	customRouter.navigateTo({
 	    url: '/pagesHome/cateory/index',
@@ -17,6 +26,7 @@
 	        'id':0
 	    }
 	})
+	
 }
 	
 </script>

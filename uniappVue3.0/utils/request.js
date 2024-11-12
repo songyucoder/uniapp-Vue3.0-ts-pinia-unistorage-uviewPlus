@@ -1,5 +1,5 @@
 import { HEADER, baseUrl } from '@/config/config.js'
-import { useUserStore } from '@/stores/user'
+// import { useUserStore } from '@/stores/user'
 
 const request = (config) => {
     config.url = baseUrl.base_http + config.url
@@ -14,8 +14,8 @@ const request = (config) => {
                     uni.hideLoading()
                 }
                 uni.stopPullDownRefresh()
-                const userStore = useUserStore() 
-                const isLogin = userStore.isLogin
+                // const userStore = useUserStore() 
+                // const isLogin = userStore.isLogin
                 let errorMessage = '网络请求出错'
                 // 异常
                 if (responses.statusCode == 200) {
@@ -82,7 +82,7 @@ const request = (config) => {
                         duration: 2000,
                         icon: 'none'
                     })
-                    userStore.logout(true)
+                  //  userStore.logout(true)
                     reject()
                 } else {
                     console.log('error ==>', responses.data)
