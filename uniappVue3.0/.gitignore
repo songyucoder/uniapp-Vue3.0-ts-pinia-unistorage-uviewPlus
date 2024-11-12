@@ -1,0 +1,17 @@
+unpackage/cache
+unpackage/dist
+unpackage/release
+.DS_Store
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.history/*
+./*.code-workspace
+node_modules
+.env
+.env.local
+.env.development.local
+yarn.lock
+package-lock.json
+
