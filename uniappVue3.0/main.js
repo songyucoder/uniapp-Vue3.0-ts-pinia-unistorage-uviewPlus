@@ -1,5 +1,4 @@
 import App from './App'
-
 // #ifndef VUE3
 import Vue from 'vue'
 import './uni.promisify.adaptor'
@@ -14,6 +13,7 @@ app.$mount()
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
 import customRouter from './utils/custom-router'
+
 export function createApp() {
   const app = createSSRApp(App)
   app.provide('customRouter', customRouter)
