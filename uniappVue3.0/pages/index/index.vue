@@ -5,15 +5,8 @@
 		</view>
 
 		<view class="flex mt-40 bg-gray-200">
-			<video v-if="splice_video.length > 0" :src="splice_video" controls></video>
-			<button @click="uploadVideoClickEvent">选择视频</button>
-			<button @click="spliceVideoClickEvent">视频分割</button>
-			<button v-if="materialId_splice.length > 0" @click="spliceVideoResCallEvent">分割结果查询</button>
-			<view class="flex mt-10">
-				<view  v-for="(item,index) in splice_list" :key="index">
-					<video class="w-400 h-400" :src="item.videoUrl" controls></video>
-				</view>
-			</view>
+			<button @click="clickNavToEvent('/pagesHome/cateory/index')">视频分割</button>
+			<button @click="clickNavToEvent('/pagesHome/videoEidt/index')">视频编辑</button>
 		</view>
 
 	</view>
@@ -36,13 +29,20 @@
 	const customRouter = inject('customRouter')
     const splice_video = ref('')
 	const splice_list = ref([]) // 分割数组
-	const materialId_splice = ref('37134768') 
+	const materialId_splice = ref(0) 
 	onLoad(async () => {
 		//console.log(getUploadApplyNonce('sdff'))
 
 	})
+	const clickNavToEvent = (url)=>{
+		customRouter.navigateTo({
+			url: url,
+			query: {
+				'id': 0
+			}
+		})
+	}
 	const uploadVideoClickEvent = () => {
-		
 		var self = this;
 		uni.chooseVideo({
 			sourceType: ['camera', 'album'],
@@ -77,6 +77,7 @@
 				uni.hideLoading()
 				console.log(res.data)
 				materialId_splice.value = res.data.body.dataList[0].materialId
+				console.log(materialId_splice.value )
 			}
 		})
 		

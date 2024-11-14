@@ -20,10 +20,16 @@
 	        "pages": [
                     {"path": "cateory/index",
                     "style": {
-                        "navigationBarTitleText": "分类",
+                        "navigationBarTitleText": "视频分割",
                         "backgroundColor": "#FFFFFF",
                         "navigationStyle": "custom"
-                    }
+                    },
+					{"path": "videoEidt/index",
+					"style": {
+					    "navigationBarTitleText": "视频编辑",
+					    "backgroundColor": "#FFFFFF",
+					    "navigationStyle": "custom"
+					}
                 }]
 		}
 	],	
