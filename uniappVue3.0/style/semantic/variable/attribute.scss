@@ -1,0 +1,86 @@
+$_direction: (
+  l: left,
+  t: top,
+  r: right,
+  b: bottom
+);
+$_spacing-type: (
+  m: margin,
+  p: padding
+);
+$_display-value: (block, inline-block, inline, flex, inline-flex, none);
+$_position-value: (relative, absolute, fixed, sticky);
+$_flex-direction-value: (
+  row: row,
+  row-reverse: row-reverse,
+  column: column,
+  column-reverse: column-reverse
+);
+$_flex-wrap-value: (
+  nowrap: nowrap,
+  wrap: wrap,
+  reverse: wrap-reverse
+);
+$_flex-justify-content-value: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around
+);
+$_flex-align-items: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch
+);
+$_flex-align-content: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  stre tch: stretch
+);
+$_cursor-value: (
+  auto,
+  default,
+  none,
+  context-menu,
+  help,
+  pointer,
+  progress,
+  wait,
+  cell,
+  crosshair,
+  text,
+  vertical-text,
+  alias,
+  copy,
+  move,
+  no-drop,
+  not-allowed,
+  grab,
+  grabbing,
+  all-scroll,
+  col-resize,
+  row-resize,
+  n-resize,
+  e-resize,
+  s-resize,
+  w-resize,
+  ne-resize,
+  nw-resize,
+  se-resize,
+  sw-resize,
+  ew-resize,
+  ns-resize,
+  nesw-resize,
+  nwse-resize,
+  zoom-in,
+  zoom-out
+);
+$_overflow-value: (visible, hidden, scroll, auto, inherit);
+$_vertical-align-value: (baseline, top, middle, bottom, sub, text-top);
+$_visibility-value: (visible, hidden, collapse);

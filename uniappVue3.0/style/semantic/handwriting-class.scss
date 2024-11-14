@@ -1,0 +1,146 @@
+.li-none {
+  list-style-type: none;
+}
+.m-auto {
+  margin: 0 auto;
+}
+// 用户无法选择
+.no-select {
+  user-select: none;
+}
+
+// 超出省略号
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ie盒子
+.ie-box {
+  box-sizing: border-box;
+}
+
+// 无法缩放
+.no-resize {
+  resize: none;
+}
+
+// 圆角
+.border-circle {
+  border-radius: 999px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+// felx 不允许被压缩
+.shrink-0 {
+  flex-shrink: 0;
+}
+
+// 阻塞当前组件的点击事件
+.pointer-none {
+  pointer-events: none;
+}
+.pointer{
+    cursor: pointer;
+}
+.line {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+.break-spaces {
+  white-space: break-spaces;
+}
+.text-indent {
+  text-indent: 2em;
+}
+
+.full-screen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.object-fit-cover{
+  object-fit: cover;
+}
+
+.shadow-common {
+  box-shadow: 4px 0px 12px 0px rgba(0, 0, 0, 0.05);
+}
+
+.flex-basis-0 {
+  flex-basis: 0;
+}
+
+.safe-area-inset-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.vw-100 {
+  width: 100vw;
+}
+.vh-100 {
+  height: 100vh;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+.wxt__fixed-footer {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  border-top: 1px solid rgba(229, 229, 229, 0.75);
+  padding: 8px 15px;
+  z-index: 99;
+  box-sizing: border-box;
+  padding-bottom: calc(8px + constant(safe-area-inset-bottom));
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  user-select: none;
+
+  .wxt__footer-action {
+    height: 45px;
+    border-radius: 5px;
+    button {
+      height: 45px;
+      line-height: 45px;
+    }
+    &-margin {
+      margin-left: 14px;
+    }
+  }
+
+  &-placeholder {
+    display: block;
+    width: 100%;
+    padding-bottom: 62px;
+    padding-bottom: calc(62px + constant(safe-area-inset-bottom));
+    padding-bottom: calc(62px + env(safe-area-inset-bottom));
+  }
+}
+
+.fit-cover{
+  object-fit: cover;
+}
+.opacity-0{
+  opacity: 0;
+}
+.ql-font-serif {
+  font-family: Georgia, Times New Roman, serif ;
+}
+.ql-font-monospace {
+  font-family: Monaco, Courier New, monospace ;
+}

@@ -1,0 +1,304 @@
+@import './variable/base.scss';
+@import './variable/color.scss';
+@import './variable/size.scss';
+@import './variable/attribute.scss';
+
+// line-height
+@each $size in $_line-height-size {
+  .line-height-#{ $size } {
+    line-height: $size * $_line-height-base;
+  }
+}
+
+// font-weight
+@each $size in $_text-weight-size {
+  .text-weight-#{ $size } {
+    font-weight: $size;
+  }
+}
+
+// text-align
+@each $value in (left, center, right, justify) {
+  .text-#{ $value } {
+    text-align: $value;
+  }
+}
+
+// font-size
+@each $size in $_text-size {
+  .text-#{ $size } {
+    font-size: $size * $_text-size-base;
+  }
+}
+
+// letter-spacing
+@each $size in $_letter-spacing-size {
+  .letter-spacing-#{ $size } {
+    letter-spacing: $size * $_letter-spacing-base;
+  }
+}
+
+// word-spacing
+@each $size in $_word-spacing-size {
+  .word-spacing-#{ $size } {
+    word-spacing: $size * $_word-spacing-base;
+  }
+}
+
+// text-color
+@each $colorKey, $colorValue in $_text-color {
+  .text-#{ $colorKey } {
+    color: $colorValue;
+  }
+}
+
+// bg-color
+@each $colorKey, $colorValue in $_bg-color {
+  .bg-#{ $colorKey } {
+    background-color: $colorValue;
+  }
+}
+
+// border-radius
+@each $size in $_border-radius-size {
+  .border-radius-#{ $size } {
+    border-radius: $size * $_border-radius-base;
+  }
+}
+
+// border
+@each $colorKey, $colorValue in $_border-color {
+  @each $size in $_border-size {
+    .border-#{ $colorKey }-#{ $size } {
+      @if $size == 1 {
+        position: relative;
+        &::after {
+          position: absolute;
+          box-sizing: border-box;
+          content: ' ';
+          pointer-events: none;
+          top: -50%;
+          right: -50%;
+          bottom: -50%;
+          left: -50%;
+          border: 1px solid $colorValue;
+          transform: scale(0.5);
+        }
+      } @else {
+        border: $size * $_border-base solid $colorValue;
+      }
+    }
+
+    .border-#{ $colorKey }-#{ $size }-dashed {
+      @if $size == 1 {
+        position: relative;
+        &::after {
+          position: absolute;
+          box-sizing: border-box;
+          content: ' ';
+          pointer-events: none;
+          top: -50%;
+          right: -50%;
+          bottom: -50%;
+          left: -50%;
+          border: 1px dashed $colorValue;
+          transform: scale(0.5);
+        }
+      } @else {
+        border: $size * $_border-base dashed $colorValue;
+      }
+    }
+
+    // 带方向
+    @each $directionKey, $directionValue in $_direction {
+      .border-#{ $colorKey }-#{ $size }-#{ $directionKey } {
+        @if $size == 1 {
+          position: relative;
+          &::after {
+            position: absolute;
+            box-sizing: border-box;
+            content: ' ';
+            pointer-events: none;
+            top: -50%;
+            right: -50%;
+            bottom: -50%;
+            left: -50%;
+            border: 0 solid $colorValue;
+            border-#{ $directionValue }-width: 1px;
+            transform: scale(0.5);
+          }
+        } @else {
+          border-#{ $directionValue }: $size * $_border-base solid $colorValue;
+        }
+      }
+    }
+  }
+}
+
+// flex-direction
+@each $key, $value in $_flex-direction-value {
+  .flex-direction-#{ $key } {
+    flex-direction: $value;
+  }
+}
+
+// flex-wrap
+@each $key, $value in $_flex-wrap-value {
+  .flex-#{ $key } {
+    flex-wrap: $value;
+  }
+}
+
+// justify-content
+@each $key, $value in $_flex-justify-content-value {
+  .jc-#{ $key } {
+    justify-content: $value;
+  }
+}
+
+// align-items
+@each $key, $value in $_flex-align-items {
+  .ai-#{ $key } {
+    align-items: $value;
+  }
+}
+
+// align-content
+@each $key, $value in $_flex-align-content {
+  .ac-#{ $key } {
+    align-content: $value;
+  }
+}
+
+// flex-grow
+@each $size in $_flex-grow-size {
+  .flex-grow-#{ $size } {
+    flex-grow: $size;
+  }
+}
+
+// flex-shrink
+@each $size in $_flex-shrink-size {
+  .flex-shrink-#{ $size } {
+    flex-shrink: $size;
+  }
+}
+
+// order
+@each $size in $_flex-order-size {
+  .flex-order-#{ $size } {
+    order: $size;
+  }
+}
+
+// padding margin
+@each $typeKey, $typeValue in $_spacing-type {
+  @each $size in $_spacing-size {
+    // 全方向
+    .#{ $typeKey }-#{ $size } {
+      #{ $typeValue }: $size * $_spacing-base;
+    }
+
+    // x y
+    .#{ $typeKey }x-#{ $size } {
+      #{ $typeValue }-left: $size * $_spacing-base;
+      #{ $typeValue }-right: $size * $_spacing-base;
+    }
+    .#{ $typeKey }y-#{ $size } {
+      #{ $typeValue }-top: $size * $_spacing-base;
+      #{ $typeValue }-bottom: $size * $_spacing-base;
+    }
+
+    // left top right bottom
+    @each $directionKey, $directionValue in $_direction {
+      .#{ $typeKey }#{ $directionKey }-#{ $size } {
+        #{ $typeValue }-#{ $directionValue }: $size * $_spacing-base;
+      }
+    }
+  }
+}
+
+// top left right bottom
+@each $directionKey, $directionValue in $_direction {
+  @each $size in $_offset-size {
+    // t-num l-num r-num b-num
+    .#{ $directionKey }-#{ $size } {
+      #{ $directionValue }: $size * $_offset-base;
+    }
+  }
+}
+
+// position
+@each $value in $_position-value {
+  .pos-#{ $value } {
+    position: $value;
+  }
+}
+
+// display
+@each $value in $_display-value {
+  .d-#{ $value } {
+    display: $value ;
+  }
+}
+
+// cursor
+@each $value in $_cursor-value {
+  .cursor-#{ $value } {
+    cursor: $value;
+  }
+}
+
+// width height
+@each $size in $_element-size {
+  .w-#{ $size } {
+    width: $size * $_element-size-base;
+  }
+  .h-#{ $size } {
+    height: $size * $_element-size-base;
+  }
+}
+
+@each $key, $value in $_element-percentage-size {
+  .w#{ $key } {
+    width: $value;
+  }
+  .h#{ $key } {
+    height: $value;
+  }
+}
+
+// overflow
+@each $value in $_overflow-value {
+  .overflow-#{ $value } {
+    overflow: $value;
+  }
+}
+
+// text-decoration
+@each $value in (underline, none, line-through) {
+  .text-decoration-#{ $value } {
+    text-decoration: $value;
+  }
+}
+
+// vertical-align
+@each $value in $_vertical-align-value {
+  .va-#{ $value } {
+    vertical-align: $value;
+  }
+}
+
+// visibility
+@each $value in $_visibility-value {
+  .visibility-#{ $value } {
+    visibility: $value;
+  }
+}
+
+// z-index
+@each $size in $_z-index-size {
+  .z-index-#{ $size } {
+    z-index: $size;
+  }
+}
