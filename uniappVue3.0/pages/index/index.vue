@@ -1,12 +1,11 @@
 <template>
 	<view class="content">
-		<view class="text-area">
-			<text class="title" @click="onclickBtnEvent">点击跳转</text>
-		</view>
-
+	
 		<view class="flex mt-40 bg-gray-200">
 			<button @click="clickNavToEvent('/pagesHome/cateory/index')">视频分割</button>
-			<button @click="clickNavToEvent('/pagesHome/videoEidt/index')">视频编辑</button>
+			<button class="mt-20" @click="clickNavToEvent('/pagesHome/videoEidt/index')">视频编辑</button>
+			<button class="mt-20" @click="clickNavToEvent('/pagesHome/playlet/index')">短剧二创</button>
+			<button class="mt-20" @click="clickNavToEvent('/pagesHome/orally/index')">解说二创</button>
 		</view>
 
 	</view>

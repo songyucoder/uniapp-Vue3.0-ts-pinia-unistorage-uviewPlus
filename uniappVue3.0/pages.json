@@ -1,4 +1,13 @@
 {
+	"easycom": {
+		"autoscan": true,
+		// 注意一定要放在custom里，否则无效，https://ask.dcloud.net.cn/question/131175
+		"custom": {
+			"^u--(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+			"^up-(.*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue",
+			"^u-([^-].*)": "@/uni_modules/uview-plus/components/u-$1/u-$1.vue"
+		}
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
@@ -7,32 +16,46 @@
 			}
 		},
 		{
-		    "path": "pages/mine/index",
-		    "style": {
-		        "navigationBarTitleText": "我的",
-		        "navigationStyle": "custom"
-		    }
+			"path": "pages/mine/index",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"navigationStyle": "custom"
+			}
 		}
 	],
-	"subPackages": [
-	    {
-	        "root": "pagesHome",
-	        "pages": [
-                    {"path": "cateory/index",
-                    "style": {
-                        "navigationBarTitleText": "视频分割",
-                        "backgroundColor": "#FFFFFF",
-                        "navigationStyle": "custom"
-                    },
-					{"path": "videoEidt/index",
-					"style": {
-					    "navigationBarTitleText": "视频编辑",
-					    "backgroundColor": "#FFFFFF",
-					    "navigationStyle": "custom"
-					}
-                }]
-		}
-	],	
+	"subPackages": [{
+		"root": "pagesHome",
+		"pages": [{
+				"path": "cateory/index",
+				"style": {
+					"navigationBarTitleText": "视频分割",
+					"backgroundColor": "#FFFFFF"
+				}
+			},
+			{
+				"path": "videoEidt/index",
+				"style": {
+					"navigationBarTitleText": "视频编辑",
+					"backgroundColor": "#FFFFFF"
+				}
+			},
+			{
+				"path": "playlet/index",
+				"style": {
+					"navigationBarTitleText": "短剧二创",
+					"backgroundColor": "#FFFFFF"
+					
+				}
+			},
+			{
+				"path": "orally/index",
+				"style": {
+					"navigationBarTitleText": "解说二创",
+					"backgroundColor": "#FFFFFF"
+					
+			}
+		]
+	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -40,24 +63,23 @@
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
-	    "color": "#999999",
-	    "selectedColor": "#ff801a",
-	    "borderStyle": "white",
-	    "backgroundColor": "#FFFFFF",
-	    "list": [
-	        {
-	            "pagePath": "pages/index/index",
-	            "iconPath": "/static/logo.png",
-	            "selectedIconPath": "/static/logo.png",
-	            "text": "首页"
-	        },
-	        {
-	            "pagePath": "pages/mine/index",
-	            "iconPath": "/static/logo.png",
-	            "selectedIconPath": "/static/logo.png",
-	            "text": "我的"
-	        }
-	    ]
+		"color": "#999999",
+		"selectedColor": "#ff801a",
+		"borderStyle": "white",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "/static/logo.png",
+				"selectedIconPath": "/static/logo.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/mine/index",
+				"iconPath": "/static/logo.png",
+				"selectedIconPath": "/static/logo.png",
+				"text": "我的"
+			}
+		]
 	},
 	"uniIdRouter": {}
 }
