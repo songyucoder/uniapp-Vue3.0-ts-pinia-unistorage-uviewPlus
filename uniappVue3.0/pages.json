@@ -25,7 +25,8 @@
 	],
 	"subPackages": [{
 		"root": "pagesHome",
-		"pages": [{
+		"pages": [
+			{
 				"path": "cateory/index",
 				"style": {
 					"navigationBarTitleText": "视频分割",
@@ -54,7 +55,8 @@
 					"backgroundColor": "#FFFFFF"
 					
 			}
-		]
+		 }
+	]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

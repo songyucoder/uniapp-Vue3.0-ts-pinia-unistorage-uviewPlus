@@ -2,10 +2,7 @@
 	<view class="content">
 	
 		<view class="flex mt-40 bg-gray-200">
-			<button @click="clickNavToEvent('/pagesHome/cateory/index')">视频分割</button>
-			<button class="mt-20" @click="clickNavToEvent('/pagesHome/videoEidt/index')">视频编辑</button>
-			<button class="mt-20" @click="clickNavToEvent('/pagesHome/playlet/index')">短剧二创</button>
-			<button class="mt-20" @click="clickNavToEvent('/pagesHome/orally/index')">解说二创</button>
+			<button @click="clickNavToEvent('/pagesHome/cateory/index')">数据持久化</button>
 		</view>
 
 	</view>
@@ -51,108 +48,9 @@
 		});
 	}
 	
-	const spliceVideoClickEvent = ()=>{
-		if(unref(splice_video).length == 0){
-			uni.showToast({
-				icon:'none',
-				title:'视频解析到'
-			})
-			return
-		}
-		const parms = {
-				urls:[splice_video.value]
-			}
-		uni.request({
-			url:'https://api.zhaoli.com/v-w-c/gateway/ve/video/parse',
-			method:'POST',
-			header: {
-				'Content-type': 'application/json',
-				'AppKey': "0862fdf760964e34a27ab9855eae7c72",
-				'AppSign': my_md5(my_md5(JSON.stringify(parms)) +
-					"92ab5a6ea72d49518ae625cf0c758817"),
-			},
-			data: parms,
-			success: (res) => {
-				uni.hideLoading()
-				console.log(res.data)
-				materialId_splice.value = res.data.body.dataList[0].materialId
-				console.log(materialId_splice.value )
-			}
-		})
-		
-	}
-   const spliceVideoResCallEvent = ()=>{
-	   uni.showLoading({
-	   	title:'正在查询中。。。。',
-	   })
-	   const parms = {
-	   		id:unref(materialId_splice)
-	   	}
-	   uni.request({
-	   	url:'https://api.zhaoli.com/v-w-c/gateway/ve/video/parse/query',
-	   	method:'POST',
-	   	header: {
-	   		'Content-type': 'application/json',
-	   		'AppKey': "0862fdf760964e34a27ab9855eae7c72",
-	   		'AppSign': my_md5(my_md5(JSON.stringify(parms)) +
-	   			"92ab5a6ea72d49518ae625cf0c758817"),
-	   	},
-	   	data: parms,
-	   	success: (res) => {
-	   		uni.hideLoading()
-			if(res.data.code == 1000){
-				splice_list.value = []
-				splice_list.value = res.data.body
-			}else{
-				uni.showToast({
-					icon:'none',
-					title:res.data.msg
-				})
-			}
-	   		
-	   		
-	   	}
-	   })
-	   
-	   
-   }
-	const getTokenEvent = () => {
-		const parms = {
-			nonce: new Date().getTime(),
-			materialFileType: 'video'
-		}
-		return new Promise(function(resolve, reject) {
-			uni.request({
-				url: 'https://api.zhaoli.com/v-w-c/gateway/ve/file/upload/policy/apply',
-				header: {
-					'Content-type': 'application/json',
-					'AppKey': "0862fdf760964e34a27ab9855eae7c72",
-					'AppSign': my_md5(my_md5(JSON.stringify(parms)) +
-						"92ab5a6ea72d49518ae625cf0c758817"),
-				},
-				method: 'POST',
-				data: parms,
-				success: (res) => {
-					if (res.data.code == 1000) {
-						resolve(res.data.body)
-					} else {
-						reject()
-						uni.showToast({
-							icon: 'none',
-							title: res.data.msg
-						})
-					}
-				},
-				fail: (error) => {
-					reject()
-					uni.showToast({
-						icon: 'none',
-						title: JSON.toString(error)
-					})
-				}
-			})
-		})
-	}
+	
+   
+	
 
 	const uploadFile = async (tempFilePath) => {
 		const res = await getTokenEvent()

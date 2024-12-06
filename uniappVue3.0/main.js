@@ -13,9 +13,12 @@ app.$mount()
 // #ifdef VUE3
 import { createSSRApp } from 'vue'
 import customRouter from './utils/custom-router'
+// 引入状态管理
+import { setupStore } from '@/stores'
 
 export function createApp() {
   const app = createSSRApp(App)
+  app.use(setupStore)
   app.provide('customRouter', customRouter)
   return {
     app
