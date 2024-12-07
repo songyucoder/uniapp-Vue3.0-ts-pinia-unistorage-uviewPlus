@@ -2,7 +2,9 @@
 	<view class="content">
 	
 		<view class="flex mt-40 bg-gray-200">
-			<button @click="clickNavToEvent('/pagesHome/cateory/index')">数据持久化</button>
+			<button @click="clickNetWorkEvent()">接口模拟</button>
+			<button class="mt-40" @click="uploadVideoClickEvent()">数据持久化（登录参考）</button>
+			<button class="mt-40" @click="clickNavToEvent()">模拟跳转</button>
 		</view>
 
 	</view>
@@ -21,7 +23,11 @@
 	import {
 		getUploadApplyNonce
 	} from '@/api/index'
-	import crypto from 'crypto-js';
+	import {
+			useUserStore
+		} from '@/stores/modules/user'
+	import { HEADER } from '@/config/config.js' // 请求数据header 配置项
+	const userStore = useUserStore()
 	const customRouter = inject('customRouter')
     const splice_video = ref('')
 	const splice_list = ref([]) // 分割数组
@@ -30,71 +36,37 @@
 		//console.log(getUploadApplyNonce('sdff'))
 
 	})
-	const clickNavToEvent = (url)=>{
-		customRouter.navigateTo({
-			url: url,
-			query: {
-				'id': 0
-			}
-		})
-	}
-	const uploadVideoClickEvent = () => {
-		var self = this;
-		uni.chooseVideo({
-			sourceType: ['camera', 'album'],
-			success: function(res) {
-				uploadFile(res.tempFilePath)
-			}
-		});
-	}
-	
-	
-   
-	
-
-	const uploadFile = async (tempFilePath) => {
-		const res = await getTokenEvent()
-		console.log(res)
-		if (!res) {
-			uni.showToast({
-				icon: 'none',
-				title: '获取失败，请重新获取'
-			})
+	// 模拟网路请求数据
+	const clickNetWorkEvent = async()=>{
+		const res = await getUploadApplyNonce({})
+		if(res.code == 0){
+			 console.log(res.data)
 		}
-		uni.uploadFile({
-			url: res.host, //仅为示例，非真实的接口地址
-			filePath: tempFilePath,
-			name: 'file',
-			formData: {
-				'key':res.dir + 'video' + '.mp4',
-				'OSSAccessKeyId': res.accessid,
-				'policy': res.policy,
-				'signature': res.signature,
-				'success_action_status': 200,
-				'callback': res.base64CallbackBody
-			},
-			success: (uploadFileRes) => {
-				console.log(uploadFileRes.data);
-				splice_video.value =  res.urlPrefix  + 'video' + '.mp4'
-				
-			}
-		});
-
-
 	}
-
-	const my_md5 = (str) => {
-		return crypto.MD5(str).toString()
-	}
-	const onclickBtnEvent = () => {
+	const clickNavToEvent = (url)=>{
 		customRouter.navigateTo({
 			url: '/pagesHome/cateory/index',
 			query: {
 				'id': 0
 			}
 		})
-
 	}
+	// 数据持久化使用
+	const uploadVideoClickEvent = () => {
+		
+		userStore.setUserInfo({
+			name:'eee',
+			phone:'10086'
+		})
+		userStore.setToken('258825811')
+	    userStore.setisLogin(true)
+		// 登录之后 必须要进行这个conf 文件的配置，注意这这个地方
+		HEADER['Authorization'] = userStore.getToken
+	
+	}
+	
+	
+
 </script>
 
 <style lang="scss" scoped>
