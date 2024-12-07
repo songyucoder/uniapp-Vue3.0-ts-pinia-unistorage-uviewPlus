@@ -1,4 +1,4 @@
-使用uniapp + vue3 + ts + pinia 开发的uniapp框架下的vue3版本
+uniapp + vue3 + ts + pinia 开发的uniapp框架下的vue3版本
 uniapp3.0 框架【接口请求、数据持久化、css样式快速方便布局，使用UI组件框架为：[uview-plus](https://uview-plus.jiangruyi.com/components/intro.html)，适配H5、微信小程序、iOS/Android 平台  
 ## 网路请求框架
 ## 文件上传
