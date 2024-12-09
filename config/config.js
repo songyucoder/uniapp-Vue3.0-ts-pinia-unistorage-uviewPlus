@@ -15,6 +15,6 @@ const HEADER = {
     //#ifdef APP-PLUS
     'Form-type': 'app',
     //#endif
-    Authorization: uni.getStorageSync('token') ? uni.getStorageSync('token') : 'visitor'
+    Authorization: ''
 }
 export { baseUrl, HEADER }

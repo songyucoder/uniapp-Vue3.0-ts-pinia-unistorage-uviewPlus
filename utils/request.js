@@ -1,8 +1,9 @@
 import { HEADER, baseUrl } from '@/config/config.js'
-// import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 
 const request = (config) => {
     config.url = baseUrl.base_http + config.url
+    HEADER.Authorization =  useUserStore().getisLogin == true ? useUserStore().getToken : 'visitor'
     config.header = HEADER
     let promise = new Promise(function (resolve, reject) {
         if (!Reflect.has(config, 'loading') || config.loading) {
@@ -107,5 +108,4 @@ const request = (config) => {
     })
     return promise
 }
-
 export default request
