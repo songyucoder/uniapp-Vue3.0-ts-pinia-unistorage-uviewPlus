@@ -1,5 +1,5 @@
 import { HEADER, baseUrl } from '@/config/config.js'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/modules/user'
 
 const request = (config) => {
     config.url = baseUrl.base_http + config.url

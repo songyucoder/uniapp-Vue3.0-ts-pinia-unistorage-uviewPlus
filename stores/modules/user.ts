@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { store } from '../index'
-import { loginOutApi } from '@/api/mine/index'
+// import { loginOutApi } from '@/api/mine/index'
 
 interface UserState {
 	userInfo : {}
@@ -50,15 +50,8 @@ export const useUserStore = defineStore('user', {
 				title: '温馨提示',
 				content: '你确定进行推出登录',
 				success: async function (res) {
-					if (res.confirm) {
-					const res = await loginOutApi({})	
-					if(res.code == 0){
-						 this.reset()
-				      	}	
-						
-					} else if (res.cancel) {
-						console.log('用户点击取消');
-					}
+					
+					
 				}
 			})
 		},
@@ -75,7 +68,15 @@ export const useUserStore = defineStore('user', {
 			this.loginInfo = loginInfo
 		}
 	},
-	persist: true
+	persist: true 
+	// unistorage: {
+	// 	storage: {
+	// 		getItem: uni.getStorageSync,
+	// 		setItem: uni.setStorageSync,
+	// 	},
+	// 	key: 'useInfo',
+	// 	paths: ['token']
+	// }  // 自定义内容
 })
 
 export const useUserStoreWithOut = () => {

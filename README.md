@@ -10,7 +10,7 @@ uniapp3.0 框架【接口请求、数据持久化、css样式快速方便布局�
 ## ![](README_files/3.png)
  ###  在main.js 入口类文件中进行绑定
  ###  进行挂载数据如下
- ###  3-+
+ ###  
  ### ![](README_files/2.png)
  ###  进行数据存储方法如下：
 ```javascript
