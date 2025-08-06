@@ -1,6 +1,7 @@
 <template>
 	<view class="content">
-		
+		<button class="mt-40" @click="getUserInfoClickEvent()">数据持久化（登录参考）</button>
+		<text>{{userStore.getUserInfo.name}}</text>
 	</view>
 </template>
 
@@ -17,24 +18,17 @@
 	import {
 		getUploadApplyNonce
 	} from '@/api/index'
-	import crypto from 'crypto-js';
+	import {
+			useUserStore
+		} from '@/stores/modules/user'
+	const userStore = useUserStore()
 	const customRouter = inject('customRouter')
-    const splice_video = ref('')
-	const splice_list = ref([]) // 分割数组
-	const materialId_splice = ref(0) 
 	onLoad(async () => {
 		//console.log(getUploadApplyNonce('sdff'))
-
 	})
-	const uploadVideoClickEvent = () => {
-		
-		var self = this;
-		uni.chooseVideo({
-			sourceType: ['camera', 'album'],
-			success: function(res) {
-				uploadFile(res.tempFilePath)
-			}
-		});
+	// 获取存储的用户信息值
+	const getUserInfoClickEvent = () => {
+		console.log(userStore.getUserInfo)
 	}
 	
 	const spliceVideoClickEvent = ()=>{
